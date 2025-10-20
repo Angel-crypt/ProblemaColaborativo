@@ -1,4 +1,4 @@
 package model.base;
 
-public class AppicableDiscount {
+public interface AppicableDiscount {
 }
