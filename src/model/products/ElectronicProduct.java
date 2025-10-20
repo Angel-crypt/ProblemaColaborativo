@@ -1,4 +1,8 @@
-public class ElectronicProduct extends BaseProduct{
+package model.products;
+
+import model.base.BaseProduct;
+
+public class ElectronicProduct extends BaseProduct {
     private final String brand;
     private final String model;
 

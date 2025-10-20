@@ -1,3 +1,5 @@
+package model.base;
+
 public abstract class BaseProduct {
     private final int id;
     private final String name;
