@@ -1,12 +1,11 @@
 package model.products;
 
 import model.base.BaseProduct;
-import model.base.AppicableDiscount;
 
-public class Accessory extends BaseProduct implements AppicableDiscount {
+public class Accessory extends BaseProduct {
 
     private static int countAccessory = 0;
-    private String type;
+    private final String type;
 
     public Accessory(String name, double price, int amount, String type) {
         super(generateId(type), name, price, amount);
@@ -14,41 +13,34 @@ public class Accessory extends BaseProduct implements AppicableDiscount {
     }
 
     private static String generateId(String type) {
-        String typeData = type.length() >= 2
-                ? type.substring(0, 2).toUpperCase()
-                : type.toUpperCase();
+        String typeCode;
+        if (type == null || type.trim().isEmpty()) {
+            typeCode = "XX";
+        } else if (type.length() >= 2) {
+            typeCode = type.substring(0, 2).toUpperCase();
+        } else {
+            typeCode = type.toUpperCase();
+        }
 
         String counter = String.format("%03d", countAccessory);
         countAccessory++;
-
-        return counter + "-AC-" + typeData;
+        return counter + "-ACC-" + typeCode;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    // Implementación del método aplicarDescuento
-    @Override
-    public double aplicarDescuento(double porcentaje) {
-        double descuento = getPrice() * (porcentaje / 100);
-        double nuevoPrecio = getPrice() - descuento;
-        setPrice(nuevoPrecio);
-        return nuevoPrecio;
-    }
-
+    // Mostrar info resumida
     @Override
     public void showInfo() {
         System.out.println("Accesorio: " + getName() + " | Tipo: " + getType() + " | ID: " + getId());
     }
 
+    // Mostrar info detallada
     @Override
     public void showInfo(boolean detail) {
-        System.out.println("Accesorio:");
+        System.out.println("Accesorio (detalle):");
         System.out.println("    ID: " + getId());
         System.out.println("    Nombre: " + getName());
         System.out.println("    Precio: " + getPrice());
