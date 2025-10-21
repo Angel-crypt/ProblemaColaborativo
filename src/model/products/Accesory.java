@@ -40,4 +40,19 @@ public class Accessory extends BaseProduct implements AppicableDiscount {
         setPrice(nuevoPrecio);
         return nuevoPrecio;
     }
+
+    @Override
+    public void showInfo() {
+        System.out.println("Accesorio: " + getName() + " | Tipo: " + getType() + " | ID: " + getId());
+    }
+
+    @Override
+    public void showInfo(boolean detail) {
+        System.out.println("Accesorio:");
+        System.out.println("    ID: " + getId());
+        System.out.println("    Nombre: " + getName());
+        System.out.println("    Precio: " + getPrice());
+        System.out.println("    Cantidad: " + getAmount());
+        System.out.println("    Tipo: " + getType());
+    }
 }
