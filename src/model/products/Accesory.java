@@ -1,4 +1,7 @@
 package model.products;
 
-public class Accesory {
+import model.base.BaseProduct;
+import model.base.AppicableDiscount;
+
+public class Accessory extends BaseProduct implements AppicableDiscount {
 }
